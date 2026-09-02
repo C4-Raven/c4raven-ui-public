@@ -1732,16 +1732,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mantine/charts@npm:^9.2.1":
-  version: 9.2.1
-  resolution: "@mantine/charts@npm:9.2.1"
+"@mantine/charts@npm:^9.5.2":
+  version: 9.5.2
+  resolution: "@mantine/charts@npm:9.5.2"
   peerDependencies:
-    "@mantine/core": 9.2.1
-    "@mantine/hooks": 9.2.1
+    "@mantine/core": 9.5.2
+    "@mantine/hooks": 9.5.2
     react: ^19.2.0
     react-dom: ^19.2.0
     recharts: ">=3.2.1"
-  checksum: 10c0/6c170dfc4d1e35227d5537b5072c796a4cb94b1fc558ae1ac8e9c63b834da577bcc68d0c41cf77c315a4168d9d1f324be297badafe5d4282b469a9a743749657
+  checksum: 10c0/687cada6d6b05461d53cec1a8dc2e829f5d0b8dc154160bc271f27497ccbcb2e8fe8e923ec98a1eb333df30ba06d9fc8377b3998d677b5f11e8fdc5339e7a15b
   languageName: node
   linkType: hard
 
@@ -8607,7 +8607,7 @@ __metadata:
     "@codemirror/lang-yaml": "npm:^6.1.3"
     "@codemirror/view": "npm:^6.43.0"
     "@eslint/js": "npm:^9.12.0"
-    "@mantine/charts": "npm:^9.2.1"
+    "@mantine/charts": "npm:^9.5.2"
     "@mantine/core": "npm:^9.2.1"
     "@mantine/dates": "npm:^9.2.1"
     "@mantine/form": "npm:^9.2.1"
