@@ -24,7 +24,7 @@
     "@codemirror/view": "^6.43.0",
     "@mantine/charts": "^9.2.1",
     "@mantine/core": "^9.2.1",
-    "@mantine/dates": "^9.2.1",
+    "@mantine/dates": "^9.5.2",
     "@mantine/form": "^9.2.1",
     "@mantine/hooks": "^9.2.1",
     "@types/leaflet-rotatedmarker": "^0.2.6",

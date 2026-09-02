@@ -1762,18 +1762,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mantine/dates@npm:^9.2.1":
-  version: 9.2.1
-  resolution: "@mantine/dates@npm:9.2.1"
+"@mantine/dates@npm:^9.5.2":
+  version: 9.5.2
+  resolution: "@mantine/dates@npm:9.5.2"
   dependencies:
     clsx: "npm:^2.1.1"
   peerDependencies:
-    "@mantine/core": 9.2.1
-    "@mantine/hooks": 9.2.1
+    "@mantine/core": 9.5.2
+    "@mantine/hooks": 9.5.2
     dayjs: ">=1.0.0"
     react: ^19.2.0
     react-dom: ^19.2.0
-  checksum: 10c0/936c84e207a0d452dcd4d13e4cad46c873a41c56d986824e33173aae869deb8d91005a924d29ccb5a39e62423ebd64555ec49feb0831ef43af3041f4eade84a0
+  checksum: 10c0/915e2b3a632b66e4d6ec6e42250c5b3c249505870c7a3fa9f5f7bdf170d3abb44b69b43bea75bf4aeed6f0c8ad17cc65fe89ccc1d9d1efb4687d9f59086a7ffc
   languageName: node
   linkType: hard
 
@@ -8609,7 +8609,7 @@ __metadata:
     "@eslint/js": "npm:^9.12.0"
     "@mantine/charts": "npm:^9.2.1"
     "@mantine/core": "npm:^9.2.1"
-    "@mantine/dates": "npm:^9.2.1"
+    "@mantine/dates": "npm:^9.5.2"
     "@mantine/form": "npm:^9.2.1"
     "@mantine/hooks": "npm:^9.2.1"
     "@mantine/notifications": "npm:^9.2.1"
