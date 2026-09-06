@@ -93,7 +93,7 @@ export default function EUDs() {
     // happened to change page or re-sort. Poll it like the other
     // live-status pages (e.g. FederationHub's connections/metrics).
     useEffect(() => {
-        const interval = setInterval(getEuds, 10000);
+        const interval = setInterval(getEuds, 3000);
         return () => clearInterval(interval);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [activePage, sortStatus, pageSize]);
