@@ -383,8 +383,8 @@ export default function VideoStreams() {
             </Modal>
 
             {showVideo && watchingStream && (
-                <>
-                    <Group justify="center" mt="md">
+                <Stack gap="md" mt="md" mb="xl">
+                    <Group justify="center">
                         <SegmentedControl
                             value={viewMode}
                             onChange={(value) => setViewMode(value as 'webrtc' | 'hls')}
@@ -394,8 +394,14 @@ export default function VideoStreams() {
                             ]}
                         />
                     </Group>
-                    <AspectRatio ratio={16 / 9} h="100%" mb="xl" mt="md">
-                    <>
+                    {/* AspectRatio clones its one child and injects sizing props onto
+                        it directly -- wrapping more than one element (as this used to,
+                        via a Fragment) means those props silently land on nothing, so
+                        the iframe can end up with no real size. Chrome still loads a
+                        zero-size iframe; WebKit (Safari, and Chrome/iOS since it's also
+                        WebKit under Apple's rules) does not, so this broke every iOS
+                        browser while looking fine on desktop. */}
+                    <AspectRatio ratio={16 / 9} h="100%">
                         <iframe
                             key={viewMode}
                             src={watchUrl(watchingStream, viewMode)}
@@ -404,15 +410,14 @@ export default function VideoStreams() {
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowFullScreen
                         />
-                        <Button
-                            fullWidth
-                            onClick={() => { setShowVideo(false); setWatchingStream(null); }}
-                        >
-                            {t('Close Stream')}
-                        </Button>
-                    </>
-                </AspectRatio>
-                </>
+                    </AspectRatio>
+                    <Button
+                        fullWidth
+                        onClick={() => { setShowVideo(false); setWatchingStream(null); }}
+                    >
+                        {t('Close Stream')}
+                    </Button>
+                </Stack>
             )}
         </>
     );
