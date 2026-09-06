@@ -14,6 +14,7 @@ import {
     Modal,
     Pagination,
     Select,
+    SegmentedControl,
     SimpleGrid,
     Stack,
     Switch,
@@ -61,7 +62,11 @@ export default function VideoStreams() {
     const [path, setPath] = useState('');
     const [source, setSource] = useState<string | null>(null);
     const [showVideo, setShowVideo] = useState(false);
-    const [videoUrl, setVideoUrl] = useState('');
+    const [watchingStream, setWatchingStream] = useState<VideoStream | null>(null);
+    // WebRTC has much lower latency than HLS (which buffers several
+    // segments before it can start playing), so it's the default -- HLS is
+    // offered as a fallback since it's more tolerant of restrictive networks.
+    const [viewMode, setViewMode] = useState<'webrtc' | 'hls'>('webrtc');
     const [thumbnail, setThumbnail] = useState('');
     const [thumbnailOpened, setThumbnailOpened] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -190,9 +195,15 @@ export default function VideoStreams() {
     }
 
     function watch(stream: VideoStream) {
-        setVideoUrl(`${stream.hls_link}?jwt=${localStorage.getItem('token')}`);
+        setWatchingStream(stream);
+        setViewMode('webrtc');
         setShowVideo(true);
         setPath(stream.path);
+    }
+
+    function watchUrl(stream: VideoStream, mode: 'webrtc' | 'hls'): string {
+        const link = mode === 'webrtc' ? stream.webrtc_link : stream.hls_link;
+        return `${link}?jwt=${localStorage.getItem('token')}`;
     }
 
     return (
@@ -371,11 +382,23 @@ export default function VideoStreams() {
                 <Image src={thumbnail} />
             </Modal>
 
-            {showVideo && (
-                <AspectRatio ratio={16 / 9} h="100%" mb="xl" mt="md">
+            {showVideo && watchingStream && (
+                <>
+                    <Group justify="center" mt="md">
+                        <SegmentedControl
+                            value={viewMode}
+                            onChange={(value) => setViewMode(value as 'webrtc' | 'hls')}
+                            data={[
+                                { label: t('Low Latency'), value: 'webrtc' },
+                                { label: t('Reliable'), value: 'hls' },
+                            ]}
+                        />
+                    </Group>
+                    <AspectRatio ratio={16 / 9} h="100%" mb="xl" mt="md">
                     <>
                         <iframe
-                            src={videoUrl}
+                            key={viewMode}
+                            src={watchUrl(watchingStream, viewMode)}
                             title={path}
                             style={{ border: 0 }}
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -383,12 +406,13 @@ export default function VideoStreams() {
                         />
                         <Button
                             fullWidth
-                            onClick={() => { setShowVideo(false); setVideoUrl(''); }}
+                            onClick={() => { setShowVideo(false); setWatchingStream(null); }}
                         >
                             {t('Close Stream')}
                         </Button>
                     </>
                 </AspectRatio>
+                </>
             )}
         </>
     );
