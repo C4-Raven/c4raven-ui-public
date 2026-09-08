@@ -13,8 +13,10 @@ const paleBlue: MantineColorsTuple = [
   '#2d4b81',
 ];
 
-// Matches the login screen: dark.7 is the page background (rgb(35, 37, 41)),
-// dark.8 is the card/header/sidebar surface (#373a40).
+// dark.7 is the page background (near-black), dark.6 is the nested-tile
+// surface, dark.8 is the card/header/sidebar surface — each a step lighter
+// than the last, but all pushed toward black/dark grey; separation between
+// them now comes mainly from the white hairline borders, not from lightness.
 const dark: MantineColorsTuple = [
   '#C1C2C5',
   '#A6A7AB',
@@ -22,10 +24,10 @@ const dark: MantineColorsTuple = [
   '#5C5F66',
   '#373A40',
   '#2C2E33',
-  '#2f3136',
-  '#232529',
-  '#373a40',
-  '#18191c',
+  '#17181b',
+  '#0e0f11',
+  '#1c1d21',
+  '#000000',
 ];
 
 export const theme = createTheme({

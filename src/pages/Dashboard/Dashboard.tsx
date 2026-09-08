@@ -1,14 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { notifications } from '@mantine/notifications';
-import {Text, Title, Divider, Paper, Flex, Space, ScrollArea, SimpleGrid, Grid, Group, Stack, ThemeIcon} from '@mantine/core';
+import {Text, Title, Divider, Paper, Flex, Space, ScrollArea, SimpleGrid, Grid, Group, Stack} from '@mantine/core';
 import {
     IconCheck,
     IconX,
-    IconCpu,
-    IconDatabase,
-    IconDeviceFloppy,
-    IconClock,
-    IconDeviceMobile,
 } from '@tabler/icons-react';
 import { AreaChart } from '@mantine/charts';
 import { parseISO, intervalToDuration, formatDuration, format } from 'date-fns';
@@ -96,18 +91,13 @@ function NetworkHistoryChart({ label, value, data }: {
     );
 }
 
-function StatTile({ icon, value, label, color = 'blue' }: { icon: React.ReactNode; value: React.ReactNode; label: string; color?: string }) {
+function StatTile({ value, label }: { value: React.ReactNode; label: string }) {
     return (
         <Paper radius="lg" p="lg" className="raven-surface raven-surface--tile">
-            <Group wrap="nowrap">
-                <ThemeIcon size={44} radius="md" variant="light" color={color}>
-                    {icon}
-                </ThemeIcon>
-                <Stack gap={0}>
-                    <Text size="xl" fw={700}>{value}</Text>
-                    <Text size="sm" c="dimmed">{label}</Text>
-                </Stack>
-            </Group>
+            <Stack gap={0}>
+                <Text size="xl" fw={700}>{value}</Text>
+                <Text size="sm" c="dimmed">{label}</Text>
+            </Stack>
         </Paper>
     );
 }
@@ -245,11 +235,11 @@ export default function Dashboard() {
             </Flex>
 
             <SimpleGrid cols={{ base: 1, xs: 2, lg: 5 }} mb="xl">
-                <StatTile icon={<IconDeviceMobile size={24} />} value={alerts.online_euds} label="Online EUDs" color="blue" />
-                <StatTile icon={<IconCpu size={24} />} value={`${serverStatus.cpu_percent}%`} label="CPU Usage" color="orange" />
-                <StatTile icon={<IconDatabase size={24} />} value={`${memory.percent}%`} label={`Memory · ${bytes_formatter(memory.used)} used`} color="teal" />
-                <StatTile icon={<IconDeviceFloppy size={24} />} value={`${disk.percent}%`} label={`Disk · ${bytes_formatter(disk.used)} used`} color="grape" />
-                <StatTile icon={<IconClock size={24} />} value={formatDuration(intervalToDuration({ start: 0, end: uptime.uptime * 1000 }), { format: ['days', 'hours'] })} label="Uptime" color="cyan" />
+                <StatTile value={alerts.online_euds} label="Online EUDs" />
+                <StatTile value={`${serverStatus.cpu_percent}%`} label="CPU Usage" />
+                <StatTile value={`${memory.percent}%`} label={`Memory · ${bytes_formatter(memory.used)} used`} />
+                <StatTile value={`${disk.percent}%`} label={`Disk · ${bytes_formatter(disk.used)} used`} />
+                <StatTile value={formatDuration(intervalToDuration({ start: 0, end: uptime.uptime * 1000 }), { format: ['days', 'hours'] })} label="Uptime" />
             </SimpleGrid>
 
             <Grid mb="xl">

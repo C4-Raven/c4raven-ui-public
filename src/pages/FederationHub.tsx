@@ -844,7 +844,7 @@ export default function FederationHub() {
                                 ) : (
                                     <SimpleGrid cols={{ base: 1, sm: 2, lg: 3 }} mb="md">
                                         {getGroupSets().map((set) => (
-                                            <Card key={set.id} withBorder radius="md" p="sm" className="raven-surface raven-surface--tile">
+                                            <Card key={set.id} p="sm" className="raven-surface raven-surface--tile">
                                                 <Group justify="space-between" wrap="nowrap" mb={4}>
                                                     <Text fw={600} size="sm" truncate>{set.name}</Text>
                                                     <Group gap={4}>

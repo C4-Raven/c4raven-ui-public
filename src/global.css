@@ -15,6 +15,15 @@ body {
     background: var(--mantine-color-dark-7);
 }
 
+/* All text reads pure white against the darkened surfaces, including
+   Mantine's own "dimmed" tone (labels, timestamps) which otherwise
+   defaults to a mid grey. */
+:root[data-mantine-color-scheme='dark'],
+:host([data-mantine-color-scheme='dark']) {
+    --mantine-color-text: var(--mantine-color-white);
+    --mantine-color-dimmed: var(--mantine-color-white);
+}
+
 /* Header user-menu trigger: a quiet pill that reads as clickable without
    shouting — same hover language as the sidebar links. */
 .raven-user-trigger {
@@ -161,7 +170,7 @@ body {
     position: relative;
     background-color: var(--mantine-color-dark-8);
     background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0) 40%);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    border: 0.5px solid var(--mantine-color-dark-4);
     box-shadow:
         0 20px 40px -20px rgba(0, 0, 0, 0.6),
         0 8px 16px -10px rgba(0, 0, 0, 0.4),
@@ -170,30 +179,27 @@ body {
 
 /* Same treatment, tuned lighter, for tiles that sit inside another surface
    (e.g. stat tiles on the dashboard) so they still separate from their
-   parent instead of visually merging with it. */
+   parent instead of visually merging with it. Flat: no drop shadow, no
+   hover lift — separation comes from the dark-grey hairline border alone. */
 .raven-surface--tile {
     background-color: var(--mantine-color-dark-6);
-    box-shadow:
-        0 12px 24px -14px rgba(0, 0, 0, 0.55),
-        0 3px 8px -4px rgba(0, 0, 0, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    border: 0.5px solid var(--mantine-color-dark-4) !important;
+    border-radius: 12px !important;
+    box-shadow: none !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .raven-surface--interactive {
-        transition: transform 200ms var(--raven-ease-out), box-shadow 200ms var(--raven-ease-out);
-    }
+@keyframes raven-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.35; }
+}
 
-    .raven-surface--interactive:hover {
-        transform: translateY(-2px);
-        box-shadow:
-            0 24px 48px -20px rgba(0, 0, 0, 0.65),
-            0 8px 16px -8px rgba(0, 0, 0, 0.45),
-            inset 0 1px 0 rgba(255, 255, 255, 0.06);
-    }
-
-    @keyframes raven-pulse {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0.35; }
-    }
+/* Overlays (popovers, menus, dropdowns) sit above the page content, so
+   unlike flat tiles they keep a real elevation shadow to separate from
+   whatever is behind them. Modal/Drawer already carry mantine-shadow-xl. */
+.mantine-Popover-dropdown,
+.mantine-Menu-dropdown,
+.mantine-Combobox-dropdown {
+    box-shadow:
+        0 20px 40px -20px rgba(0, 0, 0, 0.6),
+        0 8px 16px -10px rgba(0, 0, 0, 0.4);
 }

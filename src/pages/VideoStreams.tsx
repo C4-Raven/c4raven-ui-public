@@ -240,7 +240,7 @@ export default function VideoStreams() {
 
             <SimpleGrid cols={{ base: 1, sm: 2, lg: 3, xl: 4 }} spacing="lg">
                 {videoStreams.map((stream) => (
-                    <Card key={stream.path} withBorder radius="lg" padding={0} className="raven-surface raven-surface--tile raven-surface--interactive" style={{ overflow: 'hidden' }}>
+                    <Card key={stream.path} padding={0} className="raven-surface raven-surface--tile" style={{ overflow: 'hidden' }}>
                         <Box
                             pos="relative"
                             style={{ cursor: 'pointer', aspectRatio: '16 / 9', background: 'var(--mantine-color-dark-8)' }}
