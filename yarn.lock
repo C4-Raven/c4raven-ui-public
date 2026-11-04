@@ -1913,12 +1913,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mantine/hooks@npm:^9.2.1":
-  version: 9.2.1
-  resolution: "@mantine/hooks@npm:9.2.1"
+"@mantine/hooks@npm:^9.6.1":
+  version: 9.6.1
+  resolution: "@mantine/hooks@npm:9.6.1"
   peerDependencies:
     react: ^19.2.0
-  checksum: 10c0/39d94b17769a9688f5bce7d88b8b8c267a159d24fc5c5ae9b518382f338db5536d19b85d3895f18d868b34d7160defb1688274af0420161aa6352d29c7ec954d
+  checksum: 10c0/74a2fa03d95fa825bd98afe4643372907619074599948c617b9bec018ad8a92523db77708a922f928e2a1326f2150bedd19f59011b56ec3c8d1d0631cb5c1b51
   languageName: node
   linkType: hard
 
@@ -4423,7 +4423,7 @@ __metadata:
     "@mantine/core": "npm:^9.2.1"
     "@mantine/dates": "npm:^9.2.1"
     "@mantine/form": "npm:^9.2.1"
-    "@mantine/hooks": "npm:^9.2.1"
+    "@mantine/hooks": "npm:^9.6.1"
     "@mantine/notifications": "npm:^9.2.1"
     "@saithodev/ts-appversion": "npm:^2.2.0"
     "@storybook/addon-links": "npm:^10.6.5"
